@@ -3,6 +3,11 @@ kind: Pipeline
 metadata:
   name: pipeline-generic
 spec:
+  params:
+    - name: image
+      type: string
+      description: Image for task generic
+      default: ubuntu
   resources:
     - name: git-resource
       type: git
@@ -14,3 +19,6 @@ spec:
         inputs:
           - name: workspace
             resource: git-resource
+      params:
+        - name: image
+          value: $(params.image)

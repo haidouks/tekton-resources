@@ -3,12 +3,19 @@ kind: Task
 metadata:
   name: task-generic
 spec:
+  params:
+    - name: image
+      type: string
+      description: Image for step invoke-script
+      default: ubuntu
   resources:
     inputs:
       - name: workspace
         type: git
   steps:
-    - name: readme
-      image: ubuntu
+    - name: invoke-script
+      image: $(params.image)
       script: |
-        cat workspace/ReadMe.md
+        chmod -R +x ./workspace
+        cd ./workspace
+        ./main.sh
