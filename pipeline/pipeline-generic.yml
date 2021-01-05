@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-generic
+spec:
+  resources:
+    - name: git-resource
+      type: git
+  tasks:
+    - name: trigger-task-generic
+      taskRef:
+        name: task-generic
+      resources:
+        inputs:
+          - name: workspace
+            resource: git-resource

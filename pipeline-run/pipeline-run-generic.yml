@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: pipeline-run-generic
+spec:
+  pipelineRef:
+    name: pipeline-generic
+  resources:
+  - name: git-resource
+    resourceRef:
+      name: git-config-server

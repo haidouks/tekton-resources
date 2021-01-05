@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-config-server
+spec:
+  type: git
+  params:
+    - name: url
+      value: "https://github.com/haidouks/config-server"
